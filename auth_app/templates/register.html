@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <title>Registration Form</title>
+</head>
+<body>
+<div class="container">
+    <h1>Create an Account</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+            {{ form.first_name }}
+             {% if form.errors.first_name %}
+                <span class="error">{{ form.errors.last_name }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+            {{ form.last_name }}
+             {% if form.errors.last_name %}
+                <span class="error">{{ form.errors.last_name }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+            {{ form.phone_number }}
+             {% if form.errors.phone_number %}
+                <span class="error">{{ form.errors.phone_number }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.date_of_birth.id_for_label }}">Date of Birth:</label>
+            {{ form.date_of_birth }}
+             {% if form.errors.date_of_birth %}
+                <span class="error">{{ form.errors.date_of_birth }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+             {% if form.errors.email %}
+                <span class="error">{{ form.errors.email }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.gender.id_for_label }}">Gender:</label>
+            {{ form.gender }}
+             {% if form.errors.gender %}
+                <span class="error">{{ form.errors.gender }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+             {% if form.errors.password1 %}
+                <span class="error">{{ form.errors.password1 }}</span>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+            {{ form.password2 }}
+             {% if form.errors.password2 %}
+                <span class="error">{{ form.errors.password2 }}</span>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: red; border-color: red; color: white;">Register</button>
+    </form>
+</div>
+</body>
+</html>
+
+
+
+
+<style>body {
+    background-color: #f2f2f2;
+    font-family: 'Cinzel', serif;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.error {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+.errorlist {
+    list-style: none;
+}
+
+.user-register-form .form-control {
+    border-color: red;
+}
+
+.user-register-form .btn-primary {
+    background-color: red;
+    border-color: red;
+}
+
+.user-register-form .btn-primary:hover {
+    background-color: #c30000;
+    border-color: #c30000;
+
+}
+</style>
