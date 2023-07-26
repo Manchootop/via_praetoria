@@ -127,3 +127,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'auth_app.ViaPraetoriaUser'
+
+LOGIN_URL = 'auth/register'

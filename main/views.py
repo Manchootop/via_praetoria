@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+
+from main.models import Product
 
 
-class Demo(TemplateView):
-    template_name = 'dashboard.html'
+class ListProductsView(ListView):
+    model = Product
+    template_name = 'list-products'

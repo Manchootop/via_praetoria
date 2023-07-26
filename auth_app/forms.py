@@ -1,9 +1,15 @@
-
 from django.contrib.auth import forms as auth_forms, get_user_model
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 from auth_app.models import ViaPraetoriaUserProfile
 
+from django import forms
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+from phonenumber_field.formfields import PhoneNumberField
+from .models import ViaPraetoriaUserProfile
+
+UserModel = get_user_model()
 
 
 class UserRegisterForm(auth_forms.UserCreationForm):
@@ -19,6 +25,7 @@ class UserRegisterForm(auth_forms.UserCreationForm):
         profile = ViaPraetoriaUserProfile(
             first_name=self.cleaned_data['first_name'],
             last_name=self.cleaned_data['last_name'],
+            email=self.cleaned_data['email'],
             phone_number=self.cleaned_data['phone_number'],
             date_of_birth=self.cleaned_data['date_of_birth'],
             gender=self.cleaned_data['gender'],
@@ -29,7 +36,7 @@ class UserRegisterForm(auth_forms.UserCreationForm):
         return user
 
     class Meta:
-        model = get_user_model()
+        model = UserModel
         fields = ('password1', 'password2', 'first_name', 'last_name', 'phone_number', 'gender')
         widgets = {
             'first_name': forms.TextInput(attrs={'placeholder': 'Enter first name'}),
