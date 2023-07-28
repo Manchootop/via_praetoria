@@ -5,13 +5,13 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from auth_app.forms import UserRegisterForm
+from auth_app.forms import UserRegisterForm, UserRegisterForm1
 
 UserModel = get_user_model()
 
 
 class LoginView(auth_views.LoginView):
-    template_name = 'auth'
+    template_name = 'login.html'
     redirect_authenticated_user = True
 
     def get_success_url(self):
