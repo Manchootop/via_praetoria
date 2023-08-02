@@ -1,13 +1,8 @@
 from django.contrib.auth import forms as auth_forms, get_user_model
-from django import forms
-from phonenumber_field.formfields import PhoneNumberField
+# from phonenumber_field.formfields import PhoneNumberField
 from auth_app.models import ViaPraetoriaUserProfile
-
 from django import forms
-from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
 from phonenumber_field.formfields import PhoneNumberField
-from .models import ViaPraetoriaUserProfile
 
 UserModel = get_user_model()
 
@@ -58,6 +53,7 @@ class EditProfileForm(forms.ModelForm):
             'date_of_birth': forms.DateInput(attrs={'min': '1920-01-01'}),
         }
 
+
 class UserRegisterForm1(auth_forms.UserCreationForm):
     first_name = forms.CharField(
         max_length=ViaPraetoriaUserProfile.FIRST_NAME_MAX_LENGTH,
@@ -68,7 +64,6 @@ class UserRegisterForm1(auth_forms.UserCreationForm):
     )
 
     date_of_birth = forms.DateField()
-
 
     gender = forms.ChoiceField(
         choices=ViaPraetoriaUserProfile.GENDERS,
@@ -105,6 +100,7 @@ class UserRegisterForm1(auth_forms.UserCreationForm):
                 }
             ),
         }
+
 
 class DeleteProfileForm(forms.ModelForm):
     def save(self, commit=True):

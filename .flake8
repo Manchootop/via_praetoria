@@ -1,0 +1,17 @@
+[flake8]
+ignore = C101,D403,F401,F403,I100,I201,W503,W504
+exclude =
+    .git,
+    __pycache__,
+    venv
+filename = *.py
+accept-encodings = utf-8
+inline-quotes = single
+max-complexity = 12
+max-line-length = 119
+multiline-quotes = double
+per-file-ignores =
+    core/project/settings/templates/settings.dev.py:F821
+    auth_app/migrations/*:E501
+    main/migrations/*:E501
+    core/via_praetoria/settings/envvars.py:F821
