@@ -1,0 +1,279 @@
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <script src="{% static 'js/cart.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <body aria-hidden="false" style="padding: 0px;">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
+    <div id="wrapper">
+        <div class="cart-icon-top">
+        </div>
+        <div class="cart-icon-bottom">
+        </div>
+        <div id="checkout">
+            CHECKOUT
+        </div>
+        <div id="info">
+            <p class="i1">Add to cart interaction prototype by Virgil Pana</p>
+            <p> Follow me on <a href="https://dribbble.com/virgilpana" style="color:#ea4c89"
+                                target="_blank">Dribbble</a> | <a style="color:#2aa9e0"
+                                                                  href="https://twitter.com/virgil_pana"
+                                                                  target="_blank">Twitter</a></p>
+        </div>
+        <div id="header">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">BRANDS</a></li>
+                <li><a href="">DESIGNERS</a></li>
+                <li><a href="">CONTACT</a></li>
+            </ul>
+        </div>
+        <div id="sidebar">
+            <h3>CART</h3>
+            <div id="cart">
+                <span class="empty">No items in cart.</span>
+            </div>
+            <h3>CATEGORIES</h3>
+            <div class="checklist categories">
+                <ul>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>New Arivals</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>Accesories</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>Bags</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>Dressed</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>Jackets</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>jewelry</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>Shoes</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>Shirts</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>Sweaters</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>T-shirts</a></li>
+                </ul>
+            </div>
+            <h3>COLORS</h3>
+            <div class="checklist colors">
+                <ul>
+                    <li><a href=""><span></span>Beige</a></li>
+                    <li><a href=""><span style="background:#222"></span>Black</a></li>
+                    <li><a href=""><span style="background:#6e8cd5"></span>Blue</a></li>
+                    <li><a href=""><span style="background:#f56060"></span>Brown</a></li>
+                    <li><a href=""><span style="background:#44c28d"></span>Green</a></li>
+                </ul>
+                <ul>
+                    <li><a href=""><span style="background:#999"></span>Grey</a></li>
+                    <li><a href=""><span style="background:#f79858"></span>Orange</a></li>
+                    <li><a href=""><span style="background:#b27ef8"></span>Purple</a></li>
+                    <li><a href=""><span style="background:#f56060"></span>Red</a></li>
+                    <li><a href=""><span
+                        style="background:#fff;border: 1px solid #e8e9eb;width:13px;height:13px;"></span>White</a></li>
+                </ul>
+            </div>
+            <h3>SIZES</h3>
+            <div class="checklist sizes">
+                <ul>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>XS</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>S</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>M</a></li>
+                </ul>
+                <ul>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>L</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>XL</a></li>
+                    <li><a href=""><span><span class="x"></span><span class="y"></span></span>XXL</a></li>
+                </ul>
+            </div>
+            <h3>PRICE RANGE</h3>
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/price-range.png" alt="">
+        </div>
+        <div id="grid-selector">
+            <div id="grid-menu">
+                View:
+                <ul>
+                    <li class="largeGrid"><a href=""></a></li>
+                    <li class="smallGrid"><a class="active" href=""></a></li>
+                </ul>
+            </div>
+            Showing 1–9 of 48 results
+        </div>
+        <div id="grid">
+            {% for product in products %}
+            <div class="product" style="z-index: 1;">
+                <div class="info-large">
+                    <h4>{{ product.title }}</h4>
+                    <div class="price-big">
+                        <span>{{ product.price }} лв.</span> $39
+                    </div>
+                    <h3>Цветове</h3>
+                    <div class="colors-large">
+                        <ul>
+                            <li><a href="" style="background:#222"><span></span></a></li>
+                            <li><a href="" style="background:#6e8cd5"><span></span></a></li>
+                            <li><a href="" style="background:#f56060"><span></span></a></li>
+                            <li><a href="" style="background:#44c28d"><span></span></a></li>
+                        </ul>
+                    </div>
+                    <h3>SIZE</h3>
+                    <div class="sizes-large">
+                        <span>XS</span>
+                        <span>S</span>
+                        <span>M</span>
+                        <span>L</span>
+                        <span>XL</span>
+                        <span>XXL</span>
+                    </div>
+                    <button class="add-cart-large">Добави в количката</button>
+                </div>
+                <div class="make3D">
+                    <div class="product-front">
+                        <div class="shadow"></div>
+                            <img src="{{ product.imageURL.url }}" alt="снимка">
+                        <div class="image_overlay"></div>
+                        <div class="add_to_cart">Add to cart</div>
+                        <div class="view_gallery">View gallery</div>
+                        <div class="stats">
+                            <div class="stats-container">
+                                <span class="product_price">{{product.price}} лв.</span>
+                                <span class="product_name">{{ product.title }}</span>
+                                <p>Summer dress</p>
+                                <div class="product-options">
+                                    <strong>Размери</strong>
+                                    <span>XS, S, M, L, XL, XXL</span>
+                                    <strong>Цветове</strong>
+                                    <div class="colors">
+                                        <div class="c-blue"><span></span></div>
+                                        <div class="c-red"><span></span></div>
+                                        <div class="c-white"><span></span></div>
+                                        <div class="c-green"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-back">
+                        <div class="shadow"></div>
+                        <div class="carousel">
+                            <ul class="carousel-container" rel="0" style="width: 945px;">
+                                <li><img src="{{product.imageURL}}" alt=""></li>
+                                <li><img src="{{product.imageURL}}" alt=""></li>
+                                <li><img src="{{product.imageURL}}" alt=""></li>
+                            </ul>
+                            <div class="arrows-perspective">
+                                <div class="carouselPrev">
+                                    <div class="y"></div>
+                                    <div class="x"></div>
+                                </div>
+                                <div class="carouselNext">
+                                    <div class="y"></div>
+                                    <div class="x"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <div class="cy"></div>
+                            <div class="cx"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <footer class="credit">Author: shipra - Distributed By: <a title="Awesome web design code &amp; scripts"
+                                                               href="https://www.codehim.com?source=demo-page"
+                                                               target="_blank">CodeHim</a></footer>
+    <script
+        src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202308090102/reactive_library_fy2021.js?bust=31076952"></script>
+    <script
+        src="https://partner.googleadservices.com/gampad/cookie.js?domain=www.codehim.com&amp;callback=_gfp_s_&amp;client=ca-pub-8329113460419074&amp;cookie=ID%3Dd06541a6acecd6d4-22e962b4bce700b2%3AT%3D1691847319%3ART%3D1691847319%3AS%3DALNI_MaUEQjWBmoD0TJDyURfkhJga9iBqw&amp;gpic=UID%3D00000c5f957a29ac%3AT%3D1691847319%3ART%3D1691847319%3AS%3DALNI_MbYVf64CYVAbp04YpEt7G-t4bb1Ow"></script>
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script
+        src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202308090102/show_ads_impl_with_ama_fy2021.js?client=ca-pub-8329113460419074&amp;plah=www.codehim.com&amp;bust=31076952"
+        id="google_shimpl"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+
+    <script src="{% static 'js/cart.js'  %}" type="text/javascript"></script>
+
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-80520768-2" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-80520768-2');
+
+    </script>
+    <script async=""
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8329113460419074"
+            crossorigin="anonymous" type="text/javascript" data-checked-head="true"></script>
+
+    <ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-client="ca-pub-8329113460419074"
+         data-ad-slot="2986786685" data-ad-format="auto" data-full-width-responsive="true"
+         data-adsbygoogle-status="done" data-ad-status="filled">
+        <div id="aswift_1_host"
+             style="border: medium; height: 280px; width: 1200px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;"
+             tabindex="0" title="Advertisement" aria-label="Advertisement">
+            <iframe id="aswift_1" name="aswift_1"
+                    style="left:0;position:absolute;top:0;border:0;width:1200px;height:280px;"
+                    sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                    width="1200" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0"
+                    allowtransparency="true" scrolling="no"
+                    src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-8329113460419074&amp;output=html&amp;h=280&amp;slotname=2986786685&amp;adk=886855045&amp;adf=3025194257&amp;pi=t.ma~as.2986786685&amp;w=1200&amp;fwrn=4&amp;fwrnh=100&amp;lmt=1691847333&amp;rafmt=1&amp;format=1200x280&amp;url=https%3A%2F%2Fwww.codehim.com%2Fdemo%2Fsingle-page-shopping-cart-template%2F&amp;fwr=0&amp;fwrattr=true&amp;rpe=1&amp;resp_fmts=3&amp;wgl=1&amp;dt=1691847333238&amp;bpp=1&amp;bdt=1538&amp;idt=229&amp;shv=r20230809&amp;mjsv=m202308090102&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3Dd06541a6acecd6d4-22e962b4bce700b2%3AT%3D1691847319%3ART%3D1691847319%3AS%3DALNI_MaUEQjWBmoD0TJDyURfkhJga9iBqw&amp;gpic=UID%3D00000c5f957a29ac%3AT%3D1691847319%3ART%3D1691847319%3AS%3DALNI_MbYVf64CYVAbp04YpEt7G-t4bb1Ow&amp;prev_fmts=0x0&amp;nras=1&amp;correlator=3180407210269&amp;frm=20&amp;pv=1&amp;ga_vid=136297112.1691847318&amp;ga_sid=1691847333&amp;ga_hid=161672700&amp;ga_fc=1&amp;u_tz=180&amp;u_his=1&amp;u_h=864&amp;u_w=1536&amp;u_ah=824&amp;u_aw=1536&amp;u_cd=24&amp;u_sd=1.25&amp;adx=0&amp;ady=1233&amp;biw=1519&amp;bih=667&amp;scr_x=0&amp;scr_y=0&amp;eid=44759837%2C44759875%2C44759926%2C31076874%2C31076924%2C31076952%2C44796632%2C44798952&amp;oid=2&amp;pvsid=2527952955474236&amp;tmod=383854428&amp;nvt=1&amp;fc=1920&amp;brdim=-7%2C-7%2C-7%2C-7%2C1536%2C0%2C1550%2C838%2C1536%2C684&amp;vis=1&amp;rsz=%7C%7CEebr%7C&amp;abl=CS&amp;pfx=0&amp;fu=1152&amp;bc=31&amp;ifi=2&amp;uci=a!2&amp;btvi=1&amp;fsb=1&amp;xpc=PFM4n2nEyK&amp;p=https%3A//www.codehim.com&amp;dtd=242"
+                    data-google-container-id="a!2" data-google-query-id="COiJibue14ADFWGe_Qcd0u8FZw"
+                    data-load-complete="true"></iframe>
+        </div>
+    </ins>
+    <script type="text/javascript">
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-2BMVGTJJG1" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-2BMVGTJJG1');
+    </script>
+
+    <ins class="adsbygoogle adsbygoogle-noablate" style="display: none !important;" data-adsbygoogle-status="done"
+         data-ad-status="unfilled">
+        <div id="aswift_0_host"
+             style="border: medium; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"
+             tabindex="0" title="Advertisement" aria-label="Advertisement">
+            <iframe id="aswift_0" name="aswift_0"
+                    style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;"
+                    sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                    frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true"
+                    scrolling="no"
+                    src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-8329113460419074&amp;output=html&amp;adk=1812271804&amp;adf=1573534164&amp;lmt=1691847333&amp;plat=3%3A16%2C4%3A16%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1081344%2C32%3A32%2C41%3A32%2C42%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fwww.codehim.com%2Fdemo%2Fsingle-page-shopping-cart-template%2F&amp;ea=0&amp;pra=5&amp;wgl=1&amp;easpi=1&amp;asro=0&amp;easppi=1&amp;ascsals=1&amp;asiscm=1&amp;aslmt=0.4&amp;asamt=-1&amp;dt=1691847333229&amp;bpp=8&amp;bdt=1530&amp;idt=203&amp;shv=r20230809&amp;mjsv=m202308090102&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3Dd06541a6acecd6d4-22e962b4bce700b2%3AT%3D1691847319%3ART%3D1691847319%3AS%3DALNI_MaUEQjWBmoD0TJDyURfkhJga9iBqw&amp;gpic=UID%3D00000c5f957a29ac%3AT%3D1691847319%3ART%3D1691847319%3AS%3DALNI_MbYVf64CYVAbp04YpEt7G-t4bb1Ow&amp;nras=1&amp;correlator=3180407210269&amp;frm=20&amp;pv=2&amp;ga_vid=136297112.1691847318&amp;ga_sid=1691847333&amp;ga_hid=161672700&amp;ga_fc=1&amp;u_tz=180&amp;u_his=1&amp;u_h=864&amp;u_w=1536&amp;u_ah=824&amp;u_aw=1536&amp;u_cd=24&amp;u_sd=1.25&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1519&amp;bih=667&amp;scr_x=0&amp;scr_y=0&amp;eid=44759837%2C44759875%2C44759926%2C31076874%2C31076924%2C31076952%2C44796632%2C44798952&amp;oid=2&amp;pvsid=2527952955474236&amp;tmod=383854428&amp;nvt=1&amp;fsapi=1&amp;fc=1920&amp;brdim=-7%2C-7%2C-7%2C-7%2C1536%2C0%2C1550%2C838%2C1536%2C684&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=33792&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=230"
+                    data-google-container-id="a!1" data-load-complete="true"></iframe>
+        </div>
+    </ins>
+    <iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe>
+    <ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done"
+         style="display: none; width: 1536px !important; height: 129px !important; bottom: 0px; clear: none !important; float: none !important; left: 0px; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1; overflow: visible !important; padding: 0px !important; position: fixed; right: auto !important; top: auto !important; vertical-align: baseline !important; visibility: visible !important; z-index: 2147483647; background: rgb(250, 250, 250) !important;"
+         data-anchor-status="displayed" data-ad-status="filled" data-anchor-shown="true">
+        <div class="grippy-host"></div>
+        <div id="aswift_3_host"
+             style="border: medium !important; height: 124px !important; width: 100% !important; margin: 0px !important; padding: 0px !important; position: relative !important; visibility: visible !important; background-color: transparent !important; display: inline-block !important; inset: auto !important; clear: none !important; float: none !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; vertical-align: baseline !important; z-index: auto !important;"
+             tabindex="0" title="Advertisement" aria-label="Advertisement">
+            <iframe id="aswift_3" name="aswift_3"
+                    style="width: 1005px !important; height: 124px !important; display: block; margin: 0px auto;"
+                    sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                    width="1005" height="124" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0"
+                    allowtransparency="true" scrolling="no"
+                    src="https://googleads.g.doubleclick.net/pagead/html/r20230809/r20110914/zrt_lookup.html?fsb=1#RS-1-&amp;adk=1812271801&amp;client=ca-pub-8329113460419074&amp;fa=1&amp;ifi=4&amp;uci=a!4&amp;btvi=2&amp;xpc=D0kkaHZ8zM&amp;p=https%3A//www.codehim.com"
+                    data-google-container-id="a!4" data-google-query-id="COiah7ue14ADFdyS_Qcdc_IBfg"
+                    data-load-complete="true"></iframe>
+        </div>
+    </ins>
+    </body>

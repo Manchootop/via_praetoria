@@ -1,0 +1,36 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}">
+ <div class="container">
+        <div class="product-card">
+            <div class="image-container">
+                <img class="product-image" src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-details">
+                <p class="product-price">$49.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+  <div class="container">
+        <div class="product-card">
+            <div class="image-container">
+                <img class="product-image" src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-details">
+                <p class="product-price">$49.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+       <div class="container">
+        <div class="product-card">
+            <div class="image-container">
+                <img class="product-image" src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-details">
+                <p class="product-price">$49.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+{% endblock %}

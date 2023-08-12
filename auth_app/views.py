@@ -1,11 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth import views as auth_views
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from auth_app.forms import UserRegisterForm, UserRegisterForm1
+from auth_app.forms import UserRegisterForm
 
 UserModel = get_user_model()
 

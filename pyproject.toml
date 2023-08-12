@@ -16,11 +16,13 @@ django-filter = "^23.2"
 django-phonenumber-field = "7.1.0"
 django-split-settings = "^1.2.0"
 pyyaml = "^6.0.1"
+pillow = "^10.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.1.0"
 pre-commit = "^3.3.3"
+colorlog = "^6.7.0"
 
 [build-system]
 requires = ["poetry-core"]
