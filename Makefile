@@ -21,6 +21,9 @@ superuser:
 .PHONY: update
 update: install migrate ;
 
+.PHONY: shell
+shell:
+	poetry run python -m core.manage shell
 
 p-venv:
 	poetry shell
