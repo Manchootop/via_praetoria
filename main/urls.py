@@ -3,8 +3,8 @@ from rest_framework import routers
 
 from main.views.handle_order_views import RatingModelViewSet, CartModelViewSet, OrderReadOnlyViewSet, \
     CategoryReadOnlyModelViewSet, SubCategoryReadOnlyModelViewSet, ImagesModelListAPIView, ImagesModelDetailAPIView, \
-    CommentsListAPIView, CommentsCreateAPIView, CommentsRetrieveUpdateDestroyAPIView
-from main.views.views import ProductReadOnlyModelViewSet
+    CommentsListAPIView, CommentsCreateAPIView, CommentsRetrieveUpdateDestroyAPIView, AddProductToCartView
+from main.views.product_views import ProductReadOnlyModelViewSet
 from shared.views import endpoints
 
 router = routers.SimpleRouter()
@@ -28,4 +28,6 @@ urlpatterns = [
     path('products/<int:product_pk>/comments/create/', CommentsCreateAPIView.as_view(), name='comments-create'),
     path('products/<int:product_pk>/comments/<int:pk>/', CommentsRetrieveUpdateDestroyAPIView.as_view(),
          name='comments-detail'),
+
+    path('products/add-to-cart/<int:product_pk>/', AddProductToCartView.as_view(), name='add-to-cart'),
 ]

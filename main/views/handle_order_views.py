@@ -1,6 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.exceptions import NotFound
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, \
+    get_object_or_404
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.status import HTTP_404_NOT_FOUND
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
@@ -102,3 +103,14 @@ class CommentsRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return ProductComment.objects.filter(product_id=self.kwargs.get('product_pk'))
+
+
+class AddProductToCartView(CreateAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        product_id = self.kwargs.get('product_pk')
+        product = get_object_or_404(Product, id=product_id)
+        serializer.save(user=self.request.user, product=product, count=1)  # Default count is 1

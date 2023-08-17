@@ -71,6 +71,12 @@ class CartSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class AddProductToCartSerializer(ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = '__all__'
+
+
 class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order

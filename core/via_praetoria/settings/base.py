@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'rest_framework_simplejwt',
     'rest_framework.authtoken',
+    'django_filters',
     'ckeditor',
     'django.contrib.postgres',
     'django_admin_hstore_widget',

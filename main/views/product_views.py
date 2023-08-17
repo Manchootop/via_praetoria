@@ -9,8 +9,6 @@ from main.models.product_models import Product
 from main.serializers.product_serializers import ProductModelSerializer
 
 
-
-
 class ProductReadOnlyModelViewSet(ReadOnlyModelViewSet):
     queryset = Product.objects.filter(count__gt=0)
     serializer_class = ProductModelSerializer

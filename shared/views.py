@@ -6,7 +6,8 @@ from rest_framework.viewsets import GenericViewSet
 
 @api_view(['GET'])
 def endpoints(request):
-    data = [''
+    data = ['/products', '/products/<id>', '/cart', '/orders/get-my-orders', '/category', '/category/<id>'] + [
+        '/sub_category', '/sub_category/<id>/', '/products/add-to-cart/<int:product_pk>'
     ]
 
     return Response(data)
