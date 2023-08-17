@@ -1,29 +1,55 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth import views as auth_views
-from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse_lazy
-from django.views import generic as views
+from rest_framework import generics as api_generic_views, permissions
+from rest_framework import views as api_views
+from rest_framework.authtoken import views
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
 
-from auth_app.forms import UserRegisterForm
+from auth_app.serializers import CreateUserSerializer
 
 UserModel = get_user_model()
 
 
-class LoginView(auth_views.LoginView):
-    template_name = 'login.html'
-    redirect_authenticated_user = True
+class RegisterView(api_generic_views.CreateAPIView):
+    queryset = UserModel.objects.all()
+    serializer_class = CreateUserSerializer
+    permission_classes = (
+        permissions.AllowAny,
+    )
 
-    def get_success_url(self):
-        return reverse_lazy('dashboard')
+
+class LoginView(views.ObtainAuthToken):
+    permission_classes = (
+        permissions.AllowAny,
+    )
 
 
-class RegisterView(views.CreateView, SuccessMessageMixin):
-    form_class = UserRegisterForm
-    template_name = 'register.html'
-    success_url = reverse_lazy('login')
-    success_message = "Your profile was created successfully"
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'is_admin': user.is_staff,
+        })
 
-    def get_success_url(self):
-        if self.success_url:
-            return self.success_url
-        return super().get_success_url()
+
+class LogoutView(api_views.APIView):
+    permission_classes = (
+        permissions.IsAuthenticated,
+    )
+
+    @staticmethod
+    def __perform_logout(request):
+        token = Token.objects.get(user=request.user)
+        token.delete()
+        return Response({
+            'message': 'User logged out',
+        })
+
+    def get(self, request):
+        return self.__perform_logout(request)
+
+    def post(self, request):
+        return self.__perform_logout(request)

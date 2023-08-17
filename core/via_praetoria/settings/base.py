@@ -7,7 +7,6 @@ SECRET_KEY = NotImplemented
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -19,6 +18,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'auth_app.apps.AuthAppConfig',
+    'rest_framework',
+    # 'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'ckeditor',
+    'django.contrib.postgres',
+    'django_admin_hstore_widget',
+    'rangefilter',
 ]
 
 MIDDLEWARE = [
@@ -45,20 +51,23 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        },      
+        },
     },
 ]
 
 WSGI_APPLICATION = 'core.via_praetoria.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'via_praetoria',
+        'USER': 'postgres',
+        'PASSWORD': 'Thatshurt',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -100,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -111,7 +119,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -135,7 +142,6 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10MB
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 AUTH_USER_MODEL = 'auth_app.ViaPraetoriaUser'
 

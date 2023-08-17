@@ -20,6 +20,8 @@ include(
     'custom.py',
     'logging.py',
     'envvars.py',
+    'rest_framework.py',
+    'ckeditor.py',
     optional(LOCAL_SETTINGS_PATH),
 )
 

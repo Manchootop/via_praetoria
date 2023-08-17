@@ -17,6 +17,12 @@ django-phonenumber-field = "7.1.0"
 django-split-settings = "^1.2.0"
 pyyaml = "^6.0.1"
 pillow = "^10.0.0"
+rest-framework-simplejwt = "^0.0.2"
+django-mptt = "^0.14.0"
+django-ckeditor = "^6.7.0"
+psycopg2-binary = "^2.9.7"
+django-admin-rangefilter = "^0.10.0"
+django-admin-hstore-widget = "^1.2.1"
 
 
 [tool.poetry.group.dev.dependencies]

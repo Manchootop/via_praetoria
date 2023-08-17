@@ -1,0 +1,75 @@
+{% extends 'store/main.html' %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product List</title>
+        <!-- Include your CSS files here -->
+    </head>
+    <body>
+    <header>
+        <h1>Product List</h1>
+    </header>
+    <main>
+        <section id="products">
+            <!-- Product list will be rendered here -->
+        </section>
+    </main>
+    <script>
+        async function fetchProducts() {
+            try {
+                const response = await fetch('/api/products/');
+                const data = await response.json();
+                renderProducts(data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        }
+
+        function renderProducts(products) {
+            const productsSection = document.getElementById('products');
+            productsSection.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+                    <h2>${product.name}</h2>
+                    <p>Price: $${product.price}</p>
+                    <p>Views: ${product.views}</p>
+                    <button data-product-id="${product.id}" onclick="addToCart(this)">Add to Cart</button>
+                `;
+                productsSection.appendChild(productCard);
+            });
+        }
+
+        async function addToCart(button) {
+            const productId = button.getAttribute('data-product-id');
+            try {
+                const response = await fetch(`/api/cart/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({product: productId}),
+                });
+                if (response.ok) {
+                    alert('Product added to cart!');
+                } else {
+                    alert('Failed to add product to cart.');
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchProducts();
+        });
+    </script>
+    </body>
+    </html>
+
+{% endblock %}

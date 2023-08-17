@@ -15,13 +15,7 @@
         <div id="checkout">
             CHECKOUT
         </div>
-        <div id="info">
-            <p class="i1">Add to cart interaction prototype by Virgil Pana</p>
-            <p> Follow me on <a href="https://dribbble.com/virgilpana" style="color:#ea4c89"
-                                target="_blank">Dribbble</a> | <a style="color:#2aa9e0"
-                                                                  href="https://twitter.com/virgil_pana"
-                                                                  target="_blank">Twitter</a></p>
-        </div>
+
         <div id="header">
             <ul>
                 <li><a href="">Home</a></li>
@@ -112,14 +106,14 @@
                         </ul>
                     </div>
                     <h3>SIZE</h3>
-                    <div class="sizes-large">
-                        <span>XS</span>
-                        <span>S</span>
-                        <span>M</span>
-                        <span>L</span>
-                        <span>XL</span>
-                        <span>XXL</span>
-                    </div>
+{#                    <div class="sizes-large">#}
+{#                        <span>XS</span>#}
+{#                        <span>S</span>#}
+{#                        <span>M</span>#}
+{#                        <span>L</span>#}
+{#                        <span>XL</span>#}
+{#                        <span>XXL</span>#}
+{#                    </div>#}
                     <button class="add-cart-large">Добави в количката</button>
                 </div>
                 <div class="make3D">
@@ -277,3 +271,112 @@
         </div>
     </ins>
     </body>
+<!-- Add this code in the <script> section of your HTML -->
+<script>
+    // Function to fetch data from the API
+    async function fetchProducts() {
+        try {
+            const response = await fetch('http://localhost:8000/store/');
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return [];
+        }
+    }
+
+    // Function to render product cards
+    async function renderProducts() {
+        const productsContainer = document.getElementById('grid');
+        const products = await fetchProducts();
+
+        if (products.length > 0) {
+            productsContainer.innerHTML = ''; // Clear existing content
+
+            products.forEach(product => {
+                const productCard = `
+                    <div class="product" style="z-index: 1;">
+                                    <div class="product" style="z-index: 1;">
+                <div class="info-large">
+                    <h4>${ product.title }</h4>
+                    <div class="price-big">
+                        <span>${ product.price } лв.</span> $39
+                    </div>
+                    <h3>Цветове</h3>
+                    <div class="colors-large">
+                        <ul>
+                            <li><a href="" style="background:#222"><span></span></a></li>
+                            <li><a href="" style="background:#6e8cd5"><span></span></a></li>
+                            <li><a href="" style="background:#f56060"><span></span></a></li>
+                            <li><a href="" style="background:#44c28d"><span></span></a></li>
+                        </ul>
+                    </div>
+                    <h3>SIZE</h3>
+
+                    <button class="add-cart-large">Добави в количката</button>
+                </div>
+                <div class="make3D">
+                    <div class="product-front">
+                        <div class="shadow"></div>
+                            <img src="${ product.imageURL.url }" alt="снимка">
+                        <div class="image_overlay"></div>
+                        <div class="add_to_cart">Add to cart</div>
+                        <div class="view_gallery">View gallery</div>
+                        <div class="stats">
+                            <div class="stats-container">
+                                <span class="product_price">${product.price} лв.</span>
+                                <span class="product_name">${ product.title }</span>
+                                <p>Summer dress</p>
+                                <div class="product-options">
+                                    <strong>Размери</strong>
+                                    <span>XS, S, M, L, XL, XXL</span>
+                                    <strong>Цветове</strong>
+                                    <div class="colors">
+                                        <div class="c-blue"><span></span></div>
+                                        <div class="c-red"><span></span></div>
+                                        <div class="c-white"><span></span></div>
+                                        <div class="c-green"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-back">
+                        <div class="shadow"></div>
+                        <div class="carousel">
+                            <ul class="carousel-container" rel="0" style="width: 945px;">
+                                <li><img src="${product.image}" alt=""></li>
+                                <li><img src="${product.image}" alt=""></li>
+                                <li><img src="${product.image}" alt=""></li>
+                            </ul>
+                            <div class="arrows-perspective">
+                                <div class="carouselPrev">
+                                    <div class="y"></div>
+                                    <div class="x"></div>
+                                </div>
+                                <div class="carouselNext">
+                                    <div class="y"></div>
+                                    <div class="x"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <div class="cy"></div>
+                            <div class="cx"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                `;
+                productsContainer.insertAdjacentHTML('beforeend', productCard);
+            });
+        } else {
+            productsContainer.innerHTML = '<p>No products available.</p>';
+        }
+    }
+
+    // Call the renderProducts function to populate the product cards
+    window.onload = renderProducts;
+</script>
+
