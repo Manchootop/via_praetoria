@@ -23,6 +23,9 @@ django-ckeditor = "^6.7.0"
 psycopg2-binary = "^2.9.7"
 django-admin-rangefilter = "^0.10.0"
 django-admin-hstore-widget = "^1.2.1"
+django-cors-headers = "^4.2.0"
+djangorestframework-simplejwt = "^5.2.2"
+pyjwt = "^2.8.0"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -7,7 +7,12 @@ SECRET_KEY = NotImplemented
 
 ALLOWED_HOSTS = []
 
-# Application definition
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:5500',
+# ]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,17 +24,23 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'auth_app.apps.AuthAppConfig',
     'rest_framework',
-    # 'rest_framework_simplejwt',
-    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    # 'rest_framework.authtoken',
     'django_filters',
     'ckeditor',
     'django.contrib.postgres',
     'django_admin_hstore_widget',
     'rangefilter',
+    'stop',
+
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

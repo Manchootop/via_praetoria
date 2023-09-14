@@ -14,9 +14,14 @@ migrations:
 run-server:
 	poetry run python -m core.manage runserver
 
+.PHONY: run-server-debug
+run-server-debug:
+	poetry run python -m core.manage runserver --noreload
+
 .PHONY: superuser
 superuser:
 	poetry run python -m core.manage createsuperuser
+
 
 .PHONY: update
 update: install migrate ;

@@ -3,7 +3,8 @@ from rest_framework import routers
 
 from main.views.handle_order_views import RatingModelViewSet, CartModelViewSet, OrderReadOnlyViewSet, \
     CategoryReadOnlyModelViewSet, SubCategoryReadOnlyModelViewSet, ImagesModelListAPIView, ImagesModelDetailAPIView, \
-    CommentsListAPIView, CommentsCreateAPIView, CommentsRetrieveUpdateDestroyAPIView, AddProductToCartView
+    CommentsListAPIView, CommentsCreateAPIView, CommentsRetrieveUpdateDestroyAPIView, AddProductToCartView, \
+    CartListAPIView, StoreAPIView, CartAPIView, CheckoutAPIView, UpdateItemAPIView, ProcessOrderAPIView
 from main.views.product_views import ProductReadOnlyModelViewSet
 from shared.views import endpoints
 
@@ -16,8 +17,14 @@ router.register('category', CategoryReadOnlyModelViewSet, 'category')
 router.register('sub_category', SubCategoryReadOnlyModelViewSet, 'sub_category')
 
 urlpatterns = [
+    path('api/store/', StoreAPIView.as_view(), name='api-store'),
+    path('api/cart/', CartAPIView.as_view(), name='api-cart'),
+    path('api/checkout/', CheckoutAPIView.as_view(), name='api-checkout'),
+    path('api/update-item/', UpdateItemAPIView.as_view(), name='api-update-item'),
+    path('api/process-order/', ProcessOrderAPIView.as_view(), name='api-process-order'),
     path('', include(router.urls)),
     path('', endpoints, name='endpoints'),
+    path('cart1/', CartListAPIView.as_view(), name='list cart items'),
 
     # product-images
     path('products/<int:product_pk>/images/', ImagesModelListAPIView.as_view(), name='images-list'),

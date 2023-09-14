@@ -1,6 +1,7 @@
 from rest_framework.fields import HiddenField, CurrentUserDefault
 from rest_framework.serializers import ModelSerializer
 
+from auth_app.serializers import ViaPraetoriaSerializer
 from main.models.handle_order_models import Category, SubCategory, ProductImage, ProductRating, ProductComment, \
     Cart, Order, Payment
 from shared.serializers import GetEmailSerializer
@@ -78,6 +79,8 @@ class AddProductToCartSerializer(ModelSerializer):
 
 
 class OrderSerializer(ModelSerializer):
+    customer = ViaPraetoriaSerializer()
+
     class Meta:
         model = Order
         fields = '__all__'

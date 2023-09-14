@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+import jwt
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.core.exceptions import ValidationError
@@ -6,6 +8,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from auth_app.managers import ViaPraetoriaUserManager
+from core.via_praetoria.settings.base import SECRET_KEY
 
 
 def validate_only_letters(value):
@@ -14,7 +17,6 @@ def validate_only_letters(value):
 
 
 class ViaPraetoriaUser(AbstractBaseUser, PermissionsMixin):
-
     email = models.EmailField(
         unique=True,
     )
@@ -30,6 +32,16 @@ class ViaPraetoriaUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
     objects = ViaPraetoriaUserManager()
+
+    @property
+    def token(self):
+        token = jwt.encode({
+            'email': self.email,
+            'exp': datetime.utcnow() + timedelta(hours=24)},
+            SECRET_KEY,
+            algorithm='HS256'
+        )
+        return token
 
 
 class ViaPraetoriaUserProfile(models.Model):
